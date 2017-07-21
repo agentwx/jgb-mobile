@@ -1,0 +1,296 @@
+@import "../define";
+
+#system {
+    padding: .2rem 0 $tabHeight 0;
+    width: 100%;
+    .index {
+        .item-list {
+            margin-bottom: 2rem;
+            background-color: $colorWhite;
+            .item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 1.2rem;
+                border-top: 1px solid $borderColor;
+                .title {
+                    display: flex;
+                    align-items: center;
+                    margin-left: .3rem;
+                    img {
+                        width: .5rem;
+                        margin-right: .2rem;
+                    }
+                    span {
+                        font-size: .4rem;
+                        line-height: 1 !important;
+                    }
+                }
+                .more {
+                    width: .3rem;
+                    height: .5rem;
+                    margin-right: .3rem;
+                }
+            }
+        }
+        .logout {
+            button {
+                width: 100%;
+                padding: .3rem 0;
+                font-size: .4rem;
+                color: $colorRed;
+                background-color: $colorWhite;
+                border: none;
+            }
+        }
+
+    }
+    > .account {
+        margin-top: -.2rem;
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1rem;
+            background-color: $colorWhite;
+            .back {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                left: .2rem;
+                top: .275rem;
+                .icon {
+                    width: .45rem;
+                    height: .45rem;
+                }
+                em {
+                    font-size: .35rem;
+                    color: $tipsColor;
+                }
+            }
+            span {
+                font-size: .5rem;
+                line-height: 1 !important;
+            }
+        }
+        .item {
+            width: 96%;
+            margin: .2rem auto 0 auto;
+            background-color: $colorWhite;
+            border: 1px solid $borderColor;
+            border-radius: .1rem;
+            > div {
+                margin: 0 .2rem;
+            }
+            .top {
+                padding-top: .2rem;
+                font-size: .4rem;
+                color: $colorBlue;
+            }
+            .bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: .2rem;
+                .left {
+                    font-size: .35rem;
+                    .code {
+                        span {
+                            color: $tipsColor;
+                            em {
+                                color: $colorBlack;
+                            }
+                        }
+                    }
+                    .status {
+                        display: flex;
+                        align-items: center;
+                        span {
+                            line-height: 1 !important;
+                            &:nth-child(2) {
+                                margin: 0 .2rem;
+                                color: $colorBlue;
+                            }
+                        }
+                    }
+                }
+                .right {
+                    .type {
+                        span {
+                            display: block;
+                            padding: .1rem .15rem .1rem .25rem;
+                            font-size: .35rem;
+                            line-height: 1 !important;
+                            &.cx {
+                                color: $colorBlue;
+                            }
+                            &.gf {
+                                color: $numberColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    > .company {
+        width: 96%;
+        margin: 0 auto;
+        border: 1px solid $borderColor;
+        border-radius: .1rem;
+        background-color: $colorWhite;
+        .section {
+            margin-bottom: .2rem;
+            .title {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid $colorBlue;
+                span {
+                    padding: .1rem .2rem;
+                    font-size: .45rem;
+                    color: $colorBlue;
+                    em {
+                        font-size: .4rem;
+                    }
+                }
+            }
+            .content {
+                padding: 0 .3rem;
+                .row {
+                    display: flex;
+                    align-items: center;
+                    height: .79rem;
+                    border-bottom: 1px dotted $borderColor;
+                    font-size: .38rem;
+                    span {
+                        width: 40%;
+                        &:nth-child(2) {
+                            width: 60%;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+        > .back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: .5rem;
+            padding-bottom: 1rem;
+            button {
+                width: 50%;
+                padding: .1rem 0;
+                font-size: .45rem;
+                border-radius: .1rem;
+                background-color: $colorWhite;
+                color: $tipsColor;
+                border: 1px solid $borderColor;
+            }
+        }
+    }
+    > .modify {
+        width: 96%;
+        margin: 0 auto;
+        padding: 3.3rem 0;
+        border: 1px solid $borderColor;
+        border-radius: .1rem;
+        background-color: $colorWhite;
+        text-align: center;
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: .4rem;
+            span {
+                width: 18%;
+                margin-right: 2%;
+                text-align: right;
+                font-size: .4rem;
+            }
+            input {
+                width: 50%;
+                height: .8rem;
+                padding-left: .2rem;
+                font-size: .35rem;
+                border: 1px solid $borderColor;
+                border-radius: .1rem;
+            }
+            button {
+                width: 33%;
+                padding: .1rem 0;
+                font-size: .45rem;
+                color: $colorWhite;
+                background-color: $colorBlue;
+                border-radius: .1rem;
+                border: none;
+                &:nth-child(2) {
+                    margin-left: .6rem;
+                    background-color: $colorWhite;
+                    color: $tipsColor;
+                    border: 1px solid $borderColor;
+                }
+            }
+            &:last-child {
+                margin-top: 1.2rem;
+            }
+        }
+    }
+    > .feedback {
+        width: 96%;
+        margin: 0 auto;
+        padding: .5rem 0;
+        border: 1px solid $borderColor;
+        border-radius: .1rem;
+        background-color: $colorWhite;
+        text-align: center;
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 93%;
+            margin: 0 auto;
+            em {
+                font-size: .4rem;
+                color: $colorBlue;
+            }
+            span {
+                text-align: left;
+                font-size: .35rem;
+                color: $tipsColor;
+            }
+            textarea {
+                width: 100%;
+                height: 4.5rem;
+                margin: .4rem 0 1rem 0;
+                padding: .3rem;
+                font-size: .35rem;
+                background-color: $colorWhite;
+                border: 1px solid $borderColor;
+                border-radius: .1rem;
+                resize: none;
+            }
+            button {
+                width: 35%;
+                padding: .1rem 0;
+                font-size: .45rem;
+                color: $colorWhite;
+                background-color: $colorBlue;
+                border-radius: .1rem;
+                border: none;
+                &:nth-child(2) {
+                    margin-left: .6rem;
+                    background-color: $colorWhite;
+                    color: $tipsColor;
+                    border: 1px solid $borderColor;
+                }
+            }
+            &:first-child {
+                justify-content: flex-start;
+                font-size: .3rem;
+            }
+        }
+    }
+}

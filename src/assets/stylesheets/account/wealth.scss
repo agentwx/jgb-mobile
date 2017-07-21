@@ -1,0 +1,302 @@
+@import "../define";
+#wealth {
+    width: 100%;
+    padding: .2rem 0 $tabHeight 0;
+    .wealth-count {
+        margin: .2rem .2rem 0 .2rem;
+        background-color: $colorWhite;
+        border: 1px solid $numberColor;
+        border-top-color: $numberColor;
+        border-radius: .1rem;
+        .row {
+            display: flex;
+            align-items: center;
+            padding: .2rem .2rem;
+            border-bottom: 1px dotted #ddd;
+            &.title {
+                background-color: $numberColor;
+                text-align: center;
+                justify-content: center;
+                border-bottom: none;
+                span {
+                    color: #fff;
+                    font-size: .45rem;
+                }
+            }
+            .block {
+                strong {
+                    font-size: .6rem;
+                    color: $numberColor;
+                }
+                &:first-child {
+                    width: 3rem;
+                    span {
+                        display: block;
+                        &:first-child {
+                            font-size: .4rem;
+                        }
+                        &:nth-child(2) {
+                            font-size: .3rem;
+                            em {
+                                color: $colorBlue;
+                            }
+                        }
+                    }
+                }
+                &:last-child {
+                    span {
+                        font-size: .5rem;
+                        color: #000;
+                    }
+                }
+            }
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+    .wealth-hold {
+        margin: .2rem .2rem 0 .2rem;
+        > .title {
+            display: flex;
+            padding: .1rem .2rem;
+            span {
+                padding-left: .1rem;
+                font-size: .5rem;
+                border-left: 1px solid $colorBlack;
+                line-height: 1 !important;
+            }
+        }
+        .content {
+            .explain {
+                span {
+                    font-size: .4rem;
+                    color: #666;
+                    position: relative;
+                    &:before{
+                        content: '*';
+                        color: red;
+                    }
+                }
+            }
+            .logo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: .8rem 0;
+                background: #f2f2f2;
+                img {
+                    width: 4rem;
+                }
+            }
+            .text {
+                margin: .3rem 0;
+                font-size: .4rem;
+                background: #ffffff;
+                color: $colorBlue;
+                line-height: 1rem;
+                text-align: center;
+            }
+        }
+    }
+}
+
+#details {
+    width: 100%;
+    padding: .2rem 0 $tabHeight 0;
+    .details-title {
+        line-height: 1rem;
+        background: #fff;
+        text-align: center;
+        position: relative;
+        font-size: .5rem;
+        padding: .3rem;
+        color: #000;
+        span {
+            width: 50px;
+            position: absolute;
+            left: .2rem;
+            font-size: .35rem;
+            color: #666;
+            padding-top: 2px;
+            top: 50%;
+            margin-top: -13px;
+            &:before {
+                content: '';
+                width: .3rem;
+                height: .3rem;
+                border: 1px solid #999;
+                border-right: none;
+                border-top: none;
+                display: block;
+                transform: rotate(45deg);
+                position: absolute;
+                top: 50%;
+                margin-top: -.15rem;
+                left: 0;
+            }
+        }
+    }
+    .details {
+        margin: .2rem .2rem 0 .2rem;
+        background: #f2f2f2;
+        .content {
+            // padding: 0 .2rem;
+            border: 1px solid $borderColor;
+            border-radius: .1rem;
+            background-color: $colorWhite;
+            &.none-organ {
+                margin-top: 1rem;
+            }
+            .organ {
+                .title {
+                    display: flex;
+                    padding: .4rem 0 .1rem;
+                    background: #f2f2f2;
+                    border-bottom: 1px solid $colorBlue;
+                    position: relative;
+                    &:before {
+                        content: '';
+                        width: 1px;
+                        height: 100%;
+                        background: #f2f2f2;
+                        position: absolute;
+                        left: -1px;
+                        top: 0;
+                    }
+                    &:after {
+                        content: '';
+                        width: 1px;
+                        height: 100%;
+                        background: #f2f2f2;
+                        position: absolute;
+                        right: -1px;
+                        top: 0;
+                    }
+                    span {
+                        padding: 0 .1rem;
+                        font-size: .5rem;
+                        border-left: 1px solid $colorBlue;
+                        color: $colorBlue;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+                .products {
+                    .product {
+                        padding: .2rem 0;
+                        border-top: 1px solid $borderColor;
+                        &:first-child {
+                            border-top: none;
+                        }
+                        .wrap {
+                            display: flex;
+                            justify-content: space-between;
+                            .left {
+                                width: 100%;
+                                .top {
+                                    padding: .2rem .2rem;
+                                    .name {
+                                        display: flex;
+                                        align-items: center;
+                                        span {
+                                            font-size: .4rem;
+                                            color: #333;
+                                            max-width: 80%;
+                                        }
+                                        .type{
+                                            margin-left: .2rem;
+                                            padding:0 .2rem;
+                                            border: 1px solid $numberColor;
+                                            font-size: .2rem;
+                                            color: $numberColor;
+                                            border-radius: 3px;
+
+                                        }
+                                        .regular{
+                                            border-color: $colorBlue;
+                                            color: $colorBlue;
+                                            position: relative;
+                                            top: -7px;
+                                        }
+                                    }
+                                }
+                                .row {
+                                    padding: .2rem .2rem;
+                                    border-bottom: 1px dotted $borderColor;
+                                    span {
+                                        font-size: .4rem;
+                                        color: #666;
+                                        &.strong {
+                                            font-size: .5rem;
+                                            color: $colorBlue;
+                                        }
+                                        &.intro {
+                                            color: $tipsColor;
+                                        }
+                                        &.number {
+                                            color: #333;
+                                        }
+                                    }
+                                    &:last-child {
+                                        border: none;
+                                    }
+                                }
+                            }
+                            .right {
+                                align-self: center;
+                                margin-left: 15px;
+                                width: 3.5rem;
+                                button {
+                                    width: 2rem;
+                                    height: .7rem;
+                                    font-size: .4rem;
+                                    border-radius: .1rem;
+                                    box-sizing: border-box;
+                                    margin-top: 15px;
+                                    &.buy {
+                                        color: $colorBlue;
+                                        background-color: $colorWhite;
+                                        border: 1px solid $colorBlue;
+                                    }
+                                    &.sell {
+                                        color: $colorWhite;
+                                        background-color: $colorBlue;
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &:first-child {
+                    .title {
+                        border-top: none;
+                    }
+                }
+            }
+            .none {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: .5rem 0;
+                img {
+                    width: 2rem;
+                }
+                span {
+                    font-size: .4rem;
+                }
+            }
+        }
+        .notice {
+            margin: .1rem .2rem -.1rem .2rem;
+            text-align: right;
+            span {
+                font-size: .3rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,351 @@
+@import "../define";
+#product {
+    padding: 2rem 0 $tabHeight 0;
+    width: 100%;
+    .top-nav {
+        background: $colorWhite;
+        width: 100%;
+        padding: .3rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        .tab {
+            width: 70%;
+            margin: 0 auto;
+            border: 1px solid $colorBlue;
+            border-radius: 3px;
+            span {
+                width: 50%;
+                display: inline-block;
+                text-align: center;
+                font-size: .5rem;
+                padding: .15rem 0;
+                &.active {
+                    background: $colorBlue;
+                    color: $colorWhite;
+                }
+            }
+        }
+    }
+    .section {
+        // margin: 0 .2rem .2rem .2rem;
+        margin-bottom: .2rem;
+        background-color: $colorWhite;
+        .title {
+            padding: .15rem .2rem;
+            border-bottom: 1px solid;
+            background-color: $bgColor;
+            position: relative;
+            span {
+                padding-left: .2rem;
+                font-size: .5rem;
+                font-weight: bold;
+                border-left: 2px solid;
+            }
+            .btns {
+                width: 2.1rem;
+                position: absolute;
+                top: 50%;
+                right: .2rem;
+                margin-top: -.35rem;
+                .btn {
+                    float: right;
+                    width: 2.8rem;
+                }
+                a {
+                    background: $colorBlue;
+                    color: #ffffff;
+                    width: 2.2rem;
+                    line-height: .7rem;
+                    font-size: .35rem;
+                    border-radius: .1rem;
+                    box-sizing: border-box;
+                    display: block;
+                    text-align: center;
+                    text-decoration: none;
+                }
+            }
+        }
+        .venue {
+            border-color: $colorBlue;
+            span {
+                color: $colorBlue;
+            }
+        }
+        .outer {
+            border-color: $numberColor;
+            span {
+                color: $numberColor;
+            }
+        }
+        .content {
+            padding: 0 .2rem;
+            background:#f2f2f2;
+            .item {
+                padding: .2rem;
+                border-bottom: 1px dotted $borderColor;
+                    background: $colorWhite;
+                
+                &.item-current {
+                    border-bottom: none;
+                    background: $colorWhite;
+                    margin-bottom: 10px;
+                    .current {
+                        .block {
+                            &:last-child {
+                                width: 28%;
+                                button {
+                                    width: 2.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.current-end {
+                    background: #e8e8e8;
+                    .current {
+                        .block {
+                            &:last-child {
+                                width: 25%;
+                                span {
+                                    width: 1.6rem;
+                                    height: 1.6rem;
+                                    display: block;
+                                    line-height: 1.6rem !important;
+                                    text-align: center;
+                                    color: $numberColor;
+                                    border: 1px solid $numberColor;
+                                    border-radius: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+                .top {
+                    display: flex;
+                    justify-content: space-between;
+                    &.top-current {
+                        border-top: 1px solid $colorBlue;
+                        padding: .2rem 0 0;
+                            position: relative;
+
+                        span {
+                            border-bottom: none !important;
+                            position: relative;
+                            em{
+                                font-size: .4rem;
+                                color: #333;
+                            }
+                            .site {
+                                position: absolute;
+                                right: 0;
+                                bottom: 2px;
+                                // display: inline-block;
+                                // margin-left: .4rem;
+                                
+                            }
+                        }
+                    }
+                    .name {
+                        display: flex;
+                        align-items: center;
+                        span {
+                            font-size: .5rem;
+                            color: $colorBlue;
+                            border-bottom: 1px dotted $colorBlue;
+                        }
+                    }
+                    .point {
+                        span {
+                            color: #999;
+                        }
+                    }
+                }
+                .middle {
+                    margin: .3rem 0;
+                    // padding-left: .4rem;
+                    display: flex;
+                    justify-content: space-between;
+                    .block {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        &:first-child {
+                            span {
+                                font-size: .4rem;
+                                &.intro {
+                                    color: $tipsColor;
+                                    font-size: .3rem;
+                                    text-align: center;
+                                    margin-top: 5px;
+                                }
+                                &.number {
+                                    margin-top: 5px;
+                                    color: $colorBlue;
+                                    font-size: .7rem;
+                                    // font-weight: bold;
+                                    em {
+                                        font-size: .4rem;
+                                    }
+                                }
+                            }
+                        }
+                        span {
+                            font-size: .4rem;
+                            display: block;
+                            &.intro {
+                                color: $tipsColor;
+                                font-size: .4rem;
+                                em {
+                                    color: #000;
+                                    font-size: .4rem;
+                                }
+                                &:nth-child(1) {
+                                    em {
+                                        font-size: .5rem;
+                                    }
+                                }
+                                &:nth-child(3) {
+                                    em {
+                                        font-size: .3rem;
+                                    }
+                                }
+                            }
+                            &.number {
+                                color: $numberColor;
+                            }
+                        }
+                        &:nth-child(1) {
+                            align-self: center;
+                        }
+                        &:nth-child(2) {
+                            border-right: 1px dotted $borderColor;
+                            padding-right: 5px;
+                        }
+                        &:nth-child(3) {
+                            align-self: center;
+                        }
+                        button {
+                            width: 1.9rem;
+                            height: .7rem;
+                            font-size: .35rem;
+                            border-radius: .1rem;
+                            box-sizing: border-box;
+                            display: block;
+                            &.buy {
+                                color: $colorBlue;
+                                background-color: $colorWhite;
+                                border: 1px solid $colorBlue;
+                                margin-bottom: 10px;
+                            }
+                            &.sell {
+                                // margin: 0 .2rem;
+                                color: $colorWhite;
+                                background-color: $colorBlue;
+                                border: 1px solid $colorBlue;
+                            }
+                            &.link {
+                                color: $tipsColor;
+                                background-color: $colorWhite;
+                                border: 1px solid $tipsColor;
+                            }
+                            &.auth {
+                                // margin-right: .2rem;
+                                color: $colorBlue;
+                                background-color: $colorWhite;
+                                border: 1px solid $colorBlue;
+                            }
+                        }
+                    }
+                    &.current {
+                        .block {
+                            &:nth-child(1),
+                            &:nth-child(2) {
+                                span {
+                                    font-size: .4rem;
+                                    &.intro {
+                                        color: $tipsColor;
+                                        font-size: .3rem;
+                                        text-align: center;
+                                        margin-top: 5px;
+                                    }
+                                    &.number {
+                                        margin-top: 5px;
+                                        color: $colorBlue;
+                                        font-size: .7rem;
+                                        // font-weight: bold;
+                                        em {
+                                            font-size: .4rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &:last-child {
+                    border: none;
+                }
+                .bottom {
+                    display: flex;
+                    justify-content: space-around;
+                    .block {
+                        width: 50%;
+                        span {
+                            display: block;
+                            font-size: .4rem;
+                            color: $tipsColor;
+                            em {
+                                color: #333;
+                            }
+                        }
+                        &:last-child {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .modal-container {
+        width: 95%;
+        margin-top: -10%;
+        background-color: $colorWhite;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, .3);
+        .title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1.25rem;
+            border-bottom: 1px dotted $borderColor;
+            span {
+                padding: .18rem 0;
+                font-size: .5rem;
+                letter-spacing: 1.5px;
+                color: $colorBlue;
+            }
+            a {
+                position: absolute;
+                top: .4rem;
+                right: .4rem;
+            }
+            &:nth-child(4) {
+                margin-top: .5rem;
+            }
+        }
+        .content {
+            width: 95%;
+            margin: 0 auto;
+            padding: .3rem 0 .2rem 0;
+            text-align: left;
+            span {
+                font-size: .4rem;
+                em {
+                    color: $colorBlue
+                }
+            }
+        }
+    }
+}

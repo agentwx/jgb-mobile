@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="keywords" content="机构宝">
+    <meta name="description" content="机构宝">
+    <title>机构宝</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/0.4.3/style/weui.min.css" media="none" onload="if(media!='all')media='all'">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/0.8.2/css/jquery-weui.min.css" media="none" onload="if(media!='all')media='all'">
+</head>
+<body>
+    <app></app>
+    <!-- built files will be auto injected -->
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/0.8.2/js/jquery-weui.min.js"></script>
+    <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+    <script type="text/javascript">
+        requirejs.config({
+            paths: {
+                flexlib: '//g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js',
+                fastclick: '//cdn.bootcss.com/fastclick/1.0.6/fastclick.min',
+                domReady: '//cdn.bootcss.com/require-domReady/2.0.1/domReady.min'
+            },
+            map: {
+                '*': {
+                    'css': '//cdn.bootcss.com/require-css/0.1.8/css.min.js'
+                }
+            },
+            shim: {},
+            waitSeconds: 30
+        });
+        define('main', ['fastclick', 'flexlib'], function (FastClick) {
+            window.onload = function () {
+                // 解决IOS点击有300ms延迟的问题
+                FastClick.attach(document.body);
+            }
+        });
+        require(['domReady!'], function () {
+            require(['main'], function () {});
+        });
+    </script>
+</body>
+</html>

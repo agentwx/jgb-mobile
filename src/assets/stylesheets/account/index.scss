@@ -1,0 +1,401 @@
+@import "../define";
+#account {
+    .tab {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: .2rem 0;
+        background-color: $colorWhite;
+        border-top: 1px solid $borderColor;
+        display: flex;
+        justify-content: space-around;
+        .item {
+            text-align: center;
+            .icon {
+                width: 1rem;
+                height: .5rem;
+                margin: 0 auto;
+            }
+            .text {
+                margin-top: .2rem;
+                font-size: .35rem;
+                height: .4rem;
+                color: $tipsColor;
+            }
+            &.active {
+                .text {
+                    color: $colorBlue;
+                }
+            }
+        }
+    }
+    .modal-container {
+        border-radius: 3px;
+        width: 95%;
+        margin-top: -10%;
+        background-color: $colorWhite;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, .3);
+        .title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1.25rem;
+            border-bottom: 1px dotted $borderColor;
+            span {
+                padding: .18rem 0;
+                font-size: .6rem;
+                letter-spacing: 1.5px;
+                color: $colorBlue;
+                border-bottom: 1px solid $colorBlue;
+            }
+            a {
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+                top: 0;
+                right: 0;
+                text-align: center;
+                line-height: 1.2rem
+            }
+            &:nth-child(4) {
+                margin-top: .3rem;
+            }
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            margin: 0 auto;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-top: 4px solid $colorBlue;
+        }
+        .content {
+            width: 80%;
+            margin: 0 auto;
+            padding: .3rem 0 .2rem 0;
+            text-align: left;
+            .row {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding-bottom: .4rem;
+                &.hint{
+                    margin-top: -5px;
+                    span{
+                        opacity: 0
+                    }
+                    p{
+                        color: #999;
+                    }
+                }
+                span {
+                    font-size: .4rem;
+                }
+                select {
+                    width: 5.2rem;
+                    height: .8rem;
+                    border: 1px solid $borderColor;
+                    background-color: $colorWhite;
+                    outline: none;
+                }
+                input {
+                    height: .8rem;
+                    padding-left: .25rem;
+                    border: 1px solid $borderColor;
+                    font-size: .3rem;
+                    box-sizing: border-box;
+                    &.money1 {
+                        width: 4.3rem !important;
+                    }
+                    &::placeholder {
+                        font-size: .29rem;
+                        line-height: .5rem;
+                    }
+                }
+                .select {
+                    display: inline-block;
+                    width: 5.2rem;
+                    height: .62rem;
+                    padding: .1rem 0;
+                    font-size: .4rem;
+                    color: $colorBlack;
+                    border: 1px solid $borderColor;
+                    text-align: center;
+                    &.active {
+                        color: $numberColor;
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAAjCAMAAACKA+foAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAjVBMVEUAAAD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/dgj/3sP/3cH/m0v/t33/xZb/kDb/5dD/cwH/4sv/w5P/dAT/eQz/+/f/fhb/tHf/4Mf/eg//5tH/lkL/oFT/7d//snMAAACm7pHVAAAAFnRSTlMABZYUvy7fUvMBf/4MrCDQP+pn+sA+rRorTwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACpSURBVGje7ZlnEoIwFAYjKFZELM+CCEq13f96ahT8ww327Q12JpN8szGCxYiBoupEVJ2IqhNRdSKqTkTViag6EVXn0XOo6m6fWmkGHjVQDUfQNjeeTKFZcuZTi+w8oMboRUjt8MuVtd7uaOrvHfNlf4Cpu+ufeXSEHXi7Yz7Ep4SlbndMer5Ilheoa67ZMWVVX2+oG77dMXJ/PFGP23/H0P7XN6F0qmN5AedHQM9MABcdAAAAAElFTkSuQmCC) no-repeat;
+                        background-size: 100% 100%;
+                        border-color: transparent;
+                    }
+                }
+                .reser-all {
+                    height: .8rem;
+                    margin-left: .2rem;
+                    padding: 0 .2rem;
+                    font-size: .4rem;
+                    color: $numberColor;
+                    border: 1px solid $numberColor;
+                    background-color: $colorWhite;
+                }
+                &.err-msg {
+                    p {
+                        margin: 0 auto;
+                        font-size: .4rem;
+                        color: $colorRed;
+                    }
+                }
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+        }
+        .comment {
+            .title {
+                margin-top: .5rem;
+            }
+            .detail {
+                padding: .2rem 0;
+                text-align: center;
+                span {
+                    display: block;
+                    line-height: 1.8;
+                    em {
+                        color: $colorBlue;
+                    }
+                }
+                > span {
+                    font-size: .3rem;
+                    color: $tipsColor;
+                }
+            }
+        }
+        .btns {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: .4rem;
+            button {
+                width: 35%;
+                padding: .1rem 0;
+                font-size: .5rem;
+                color: $colorWhite;
+                border-radius: .1rem;
+                border: none;
+                &:first-child {
+                    background-color: $colorBlue;
+                }
+                &:last-child {
+                    background-color: $disableColor;
+                }
+                &.disabled {
+                    background-color: $disableColor !important;
+                    cursor: default;
+                }
+            }
+            span {
+                display: block;
+                &:nth-child(3) {}
+            }
+        }
+        &.order-buy {
+            .content {
+                .row {
+                    input {
+                        width: 3.8rem;
+                    }
+                }
+            }
+        }
+        &.order-sell {
+            .content {
+                .row {
+                    input {
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+        &.buy {
+            .content {
+                .row {
+                    input {
+                        width: 3.8rem;
+                    }
+                }
+            }
+            .comment {
+                width: 90%;
+                margin: 0 auto;
+                .detail {
+                    .bank-info {
+                        margin: .2rem 0;
+                        padding: .2rem;
+                        background-color: $bgColor;
+                        font-size: .3rem;
+                        color: $colorBlack;
+                        border: 1px solid $borderColor;
+                    }
+                    span {
+                        text-align: left;
+                        em {
+                            color: $colorRed;
+                        }
+                    }
+                }
+            }
+        }
+        &.sell {
+            .content {
+                .row {
+                    input {
+                        width: 5.2rem;
+                    }
+                }
+            }
+            .btns {
+                margin-top: .6rem;
+                div {
+                    width: 35%;
+                    text-align: center;
+                    button {
+                        width: 100%;
+                        margin-bottom: .2rem;
+                    }
+                    span {
+                        font-size: .4rem;
+                        color: $tipsColor;
+                    }
+                    &:first-child {
+                        button {
+                            background-color: $numberColor;
+                        }
+                    }
+                    &:last-child {
+                        button {
+                            background-color: $colorBlue;
+                        }
+                    }
+                    .back {
+                        background: #aaa !important;
+                    }
+                    .sure {
+                        background-color: $colorBlue !important;
+                    }
+                }
+            }
+        }
+        &.auth {
+            .content {
+                input {
+                    width: 5.2rem;
+                    &#txn-amount::-webkit-input-placeholder {
+                        direction: rtl;
+                    }
+                }
+                .row {
+                    .licence-text,
+                    .investor-text {
+                        width: 2.15rem;
+                    }
+                    .tips {
+                        margin: 0 auto;
+                        font-size: .3rem;
+                        color: $tipsColor;
+                    }
+                }
+            }
+        }
+        &.current {
+            .content {
+                .row {
+                    position: relative;
+                    input {
+                        width: 5.2rem;
+                        padding-right: .5rem;
+                    }
+                    input::-ms-input-placeholder {
+                        text-align: right;
+                    }
+                    input::-webkit-input-placeholder {
+                        text-align: right;
+                    }
+                    &:last-child {
+                        padding-bottom: 40px;
+                    }
+                    .select {
+                        height: auto;
+                        text-decoration: none;
+                    }
+                    span {
+                        width: 2.2rem;
+                    }
+                    .account-list {
+                        position: absolute;
+                        top: .8rem;
+                        left: 2.2rem;
+                        width: 5.2rem;
+                        background: #fff;
+                        // border: 1px solid $borderColor;
+                        // border-top: none;
+                        // border-bottom: none;
+                        z-index: 999;
+                        max-height: 130px;
+                        overflow: auto;
+                        ul {
+                            padding: 0px 0px;
+                            margin: 0;
+                        }
+                        li {
+                            list-style: none;
+                            // line-height: 25px;
+                            font-size: .4rem;
+                            border: 1px solid $borderColor;
+                            border-top: none;
+                            padding: 0px 10px;
+                            // width: 398px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            &:hover {
+                                background: #ececec;
+                            }
+                            &:last-child {
+                                text-align: center;
+                                a {
+                                    cursor: pointer;
+                                }
+                                &:hover {
+                                    background: #ffffff;
+                                }
+                            }
+                        }
+                    }
+                    .list-arrow {
+                        width: .5rem;
+                        height: .8rem;
+                        position: absolute;
+                        right: 6px;
+                        top: 0;
+                        background: #b7b7b7;
+                        &:after {
+                            content: '';
+                            width: .2rem;
+                            height: .2rem;
+                            display: block;
+                            border: 1px solid #ffffff;
+                            border-left-color: transparent;
+                            border-top-color: transparent;
+                            position: absolute;
+                            right: .1rem;
+                            top: .2rem;
+                            transform: rotate(45deg);
+                        }
+                        &.arrow-top {
+                            transition: rotate(90deg) 2s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

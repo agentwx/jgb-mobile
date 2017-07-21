@@ -1,0 +1,119 @@
+@import "define";
+
+#forget {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    .title {
+        margin: 1rem 0;
+        span {
+            font-size: .8rem;
+            color: $colorBlue;;
+        }
+    }
+    .forget-form {
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: .6rem;
+            span {
+                font-size: .4rem;
+                &:nth-child(1) {
+                    width: 30%;
+                    text-align: right;
+                }
+                &.need {
+                    color: $colorRed;
+                    margin-left: 1%;
+                }
+            }
+            input {
+                width: 60%;
+                height: 1rem;
+                margin-left: 1%;
+                padding-left: .2rem;
+                border: 1px solid $borderColor;
+                box-sizing: border-box;
+                font-size: .3rem;
+                // 干掉iphone input 默认圆角
+                -webkit-appearance:none; 
+            }
+            #captcha {
+                width: 35%;
+            }
+            .captcha {
+                width: 23%;
+                height: 1rem;
+                margin-left: 2%;
+            }
+            #sms {
+                width: 35%;
+            }
+            .sms {
+                width: 23%;
+                height: 1rem;
+                font-size: .4rem;
+                margin-left: 2%;
+                color: $tipsColor;
+                background-color: $borderColor;
+                border: none;
+            }
+            #fzd {
+                width: 60%;
+                margin: -.6rem 0 0 31%;
+                display: table-cell;
+                ul {
+                    li {
+                        float: left;
+                        width: 33.333333%;
+                        padding: .1rem;
+                        box-sizing: border-box;
+                        color: $tipsColor;
+                        background-color: $borderColor;
+                        &:nth-child(2) {
+                            border-left: 1px solid $colorWhite;
+                            border-right: 1px solid $colorWhite;
+                        }
+                    }
+                }
+                &.weak {
+                    li:nth-child(1) {
+                        color: $colorWhite;
+                        background-color: $colorBlue;
+                    }
+                }
+                &.middle {
+                    li:nth-child(1), li:nth-child(2) {
+                        color: $colorWhite;
+                        background-color: $colorBlue;
+                    }
+                }
+                &.strong {
+                    li {
+                        color: $colorWhite;
+                        background-color: $colorBlue;
+                    }
+                }
+            }
+            &:last-child {
+                justify-content: space-between;
+                button {
+                    width: 45%;
+                    height: 1.1rem;
+                    font-size: .5rem;
+                    border-radius: .5rem;
+                    &.submit {
+                        color: $colorBlue;
+                        background-color: $colorWhite;
+                        border: 1px solid $colorBlue;
+                    }
+                    &.back {
+                        color: $tipsColor;
+                        background-color: $colorWhite;
+                        border: 1px solid $tipsColor;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,164 @@
+@import "define";
+
+#register {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    .section {
+        .title {
+            margin: .4rem 0 ;
+            span {
+                font-size: .7rem;
+                color: $colorBlue;;
+            }
+        }
+        .register-form {
+            .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: .5rem;
+                span {
+                    font-size: .4rem;
+                    &:nth-child(1) {
+                        width: 27%;
+                        text-align: right;
+                    }
+                    &.need {
+                        color: $colorRed;
+                        margin-left: 1%;
+                    }
+                }
+                input {
+                    width: 70%;
+                    height: 1rem;
+                    margin-left: 1%;
+                    padding-left: .2rem;
+                    font-size: .3rem;
+                    border: 1px solid $borderColor;
+                    box-sizing: border-box;
+                    // 干掉iphone input 默认圆角
+                -webkit-appearance:none; 
+                }
+                #captcha {
+                    width: 35%;
+                }
+                .captcha {
+                    width: 31%;
+                    height: 1rem;
+                    margin-left: 3%;
+                }
+                #sms {
+                    width: 35%;
+                }
+                .sms {
+                    width: 31%;
+                    height: 1rem;
+                    font-size: .4rem;
+                    margin-left: 3%;
+                    color: $tipsColor;
+                    background-color: $borderColor;
+                    border: none;
+                }
+                #fzd {
+                    width: 69%;
+                    margin: -.5rem 0 0 28%;
+                    display: table-cell;
+                    ul {
+                        li {
+                            float: left;
+                            width: 33.333333%;
+                            padding: .1rem;
+                            box-sizing: border-box;
+                            color: $tipsColor;
+                            background-color: $borderColor;
+                            &:nth-child(2) {
+                                border-left: 1px solid $colorWhite;
+                                border-right: 1px solid $colorWhite;
+                            }
+                        }
+                    }
+                    &.weak {
+                        li:nth-child(1) {
+                            color: $colorWhite;
+                            background-color: $colorBlue;
+                        }
+                    }
+                    &.middle {
+                        li:nth-child(1), li:nth-child(2) {
+                            color: $colorWhite;
+                            background-color: $colorBlue;
+                        }
+                    }
+                    &.strong {
+                        li {
+                            color: $colorWhite;
+                            background-color: $colorBlue;
+                        }
+                    }
+                }
+                &.agree-rule {
+                    justify-content: center;
+                    span {
+                        &:first-child {
+                            width: .4rem;
+                            height: .4rem;
+                            margin-right: .1rem;
+                            border: 1px solid $borderColor;
+                        }
+                        &:last-child {
+                            font-size: .4rem;
+                            color: $tipsColor;
+                            em {
+                                color: $colorBlue;
+                            }
+                        }
+                    }
+                }
+                &:last-child {
+                    justify-content: space-between;
+                    button {
+                        width: 45%;
+                        height: .9rem;
+                        font-size: .4rem;
+                        border-radius: .5rem;
+                        &.submit {
+                            color: $colorBlue;
+                            background-color: $colorWhite;
+                            border: 1px solid $colorBlue;
+                        }
+                        &.back {
+                            color: $tipsColor;
+                            background-color: $colorWhite;
+                            border: 1px solid $tipsColor;
+                        }
+                    }
+                }
+            }
+        }
+        .rule-content {
+            text-align: left;
+            font-size: .4rem;
+            p {
+                text-indent: .8rem;
+            }
+            h3 {
+                font-size: .5rem;
+                font-weight: bold;
+            }
+            ol {
+                padding-left: .8rem;
+                list-style: decimal;
+            }
+        }
+        > .back {
+            width: 45%;
+            height: .9rem;
+            margin: .4rem 0;
+            font-size: .4rem;
+            border-radius: .5rem;
+            color: $colorBlue;
+            background-color: $colorWhite;
+            border: 1px solid $colorBlue;
+        } 
+    }
+}

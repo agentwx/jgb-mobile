@@ -1,0 +1,143 @@
+@import "define";
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-family: $fontFamily;
+    color: $colorBlack !important;
+}
+body {
+    #main {
+        min-height: 100%;
+        input {
+            appearance: none;
+            outline: none;
+        }
+        span {
+            line-height: 1.5 !important;
+        }
+        em {
+            font-style: normal;
+        }
+        &.height{
+            height: 100%;
+        }
+    }
+    .mainActive{
+        height: 100%;
+        overflow: hidden;
+    }
+    // 干掉iphone input 默认圆角
+    input{
+                -webkit-appearance:none; 
+    }
+    /* weui日历调整 */
+    .weui-picker-calendar {
+        height: 8.1rem;
+    }
+    i.icon.icon-next, i.icon.icon-prev {
+        width: .5rem;
+        height: .5rem;
+    }
+    .picker-calendar-month-picker a.icon-only, .picker-calendar-year-picker a.icon-only {
+        line-height: 1.5rem;
+    }
+    .picker-calendar-month-picker, .picker-calendar-year-picker {
+        line-height: 1.5rem;
+    }
+    .picker-calendar-year-picker .current-year-value {
+        height: 1.5rem;
+    }
+    .toolbar .toolbar-inner {
+        height: 1.5rem;
+    }
+    .toolbar, .toolbar .title {
+        font-size: .5rem;
+    }
+    .picker-calendar-week-days {
+        height: .7rem;
+        font-size: .4rem;
+    }
+    .picker-calendar-row {
+        height: calc(100% / 10);
+    }
+    /* 转场动画 */
+    .router-enter-active {
+        animation: fadeIn .5s;
+    }
+    .router-leave-active {
+        animation: fadeOut .2s;
+    }
+    /* 弹窗动画 */
+    .modal-enter-active {
+        animation: zoomIn .3s;
+    }
+    .modal-leave-active {
+        animation: zoomOut .2s;
+    }
+    /* 下/上动画 */
+    .downup-enter-active {
+        animation: slideInDown .3s;
+    }
+    .downup-leave-active {
+        animation: slideOutUp .3s;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    @keyframes zoomIn {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+    @keyframes zoomOut {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(0);
+        }
+    }
+    @keyframes slideInDown {
+        from {
+            transform: translate3d(0, -100%, 0);
+        }
+        to {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    @keyframes slideOutUp {
+        from {
+            transform: translate3d(0, 0, 0);
+        }
+
+        to {
+            transform: translate3d(0, -100%, 0);
+        }
+    }
+}
+@media only screen and (min-width: 414px) {
+    html {
+        font-size: 41.4px !important;
+    }
+}

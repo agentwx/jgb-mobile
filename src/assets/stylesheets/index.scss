@@ -1,0 +1,86 @@
+@import "define";
+#index {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    .brand {
+        .logo {
+            width: 5rem;
+            margin: 1rem 0 .5rem 0;
+        }
+        p {
+            font-size: .6rem;
+            color: $colorBlue;
+            line-height: 1.5;
+        }
+    }
+    .login-form {
+        width: 8rem;
+        margin: 1rem auto 0 auto;
+        .row {
+            margin-bottom: .5rem;
+            position: relative;
+            .eye{
+                position: absolute;
+                right: .4rem;
+                top: 50%;
+                margin-top: -12px;
+                width: 30px;
+                height: 24px;
+                img{
+                    width: 100%;
+                    vertical-align: middle;
+                }
+            }
+            input {
+                width: 7rem;
+                height: 1.2rem;
+                padding-left: .2rem;
+                border: none;
+                border-bottom: 1px solid $colorBlue;
+                font-size: .4rem;
+                background: transparent;
+                border-radius: 0;
+            }
+            &:nth-child(3) {
+                text-align: right;
+                .forget {
+                    width: 100%;
+                    font-size: .4rem;
+                    margin-right: .3rem;
+                }
+            }
+            &:nth-child(4) {
+                .login {
+                    width: 7rem;
+                    height: 1.1rem;
+                    font-size: .5rem;
+                    color: $colorBlue;
+                    border: 1px solid $colorBlue;
+                    background: transparent;
+                    border-radius: .5rem;
+                }
+            }
+            &:nth-child(5) {
+                text-align: right;
+                span {
+                    font-size: .4rem;
+                    em {
+                        font-size: .5rem;
+                        color: $numberColor;
+                        margin-right: .3rem;
+
+                    }
+                }
+            }
+        }
+    }
+    .in-progress-tips {
+        margin-top: 3rem;
+        span {
+            font-size: .4rem;
+            color: #333;
+        }
+    }
+}
