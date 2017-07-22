@@ -138,14 +138,12 @@
                 </div>
                 <div v-else class="btns">
                     <div>
-                        <button :class="{ 'disable': isB }" @click="reser($event, 3, 1)" v-if="product.totalAsset>200">快速赎回</button>
-                        <button  :class="{ disabled:true, 'disable': isB }" v-else>快速赎回</button>
+                        <button :class="{ 'disable': isB }" @click="reser($event, 3, 1)">快速赎回</button>
                         <span>当日不计算收益</span>
                         <span v-text="isQDZ ? '单日限额5000万元' : ''"></span>
                     </div>
                     <div>
-                        <button @click="reser($event, 3, 0)" v-if="product.totalAsset>200">普通赎回</button>
-                        <button class="disabled" v-else>普通赎回</button>
+                        <button @click="reser($event, 3, 0)" >普通赎回</button>
                         <span>当日计算收益</span>
                     </div>
                 </div>
@@ -407,11 +405,12 @@ export default {
                 moneyStr=Number(moneyStr.replace(/,/g, ''));
             let dataObj = this.product;
             let money=Number(moneyStr);
+            const remaining=this.product.totalAsset-money
             if (!$prodcut.hasClass('active')) {
                 $.alert('请选择产品');
             } else if (money === 0) {
                 $.alert('份额不能为0');
-            }  else if (this.product.totalAsset-money<200) {
+            }  else if (remaining<200 && remaining!=0) {
                 $.alert('赎回后份额余额不得小于200');
             } else if (modalType == 2 && dataObj.prodCode == '000509' && money > 20000000) {
                 // 广发申购限额
