@@ -18,13 +18,15 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8181,
+    port: 8281,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
         // '/jgb-web/v1': 'http://10.10.10.19:8080'
-        '/jgb-web/v1': 'http://www.51jigoubao.com',
-
+        // '/jgb-web/v1': 'http://www.51jigoubao.com',
+       // '/jgb-web/v1': 'http://yangjianfei.uicp.cn:30170',
+        '/jgb-web/v1': 'http://q1e7793563.iask.in:21451',
+        
         // '/jgb-web/v1': 'http://10.10.10.204:9096'
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

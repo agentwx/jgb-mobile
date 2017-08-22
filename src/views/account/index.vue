@@ -61,7 +61,8 @@
                         <span>申购金额：</span>
                         <input v-if='isQDZ' id="money" type="tel" placeholder="单日限额2000万元" v-model="moneyThousands">
                         <input v-else-if='isQDZA' id="money" class="money1" type="tel" placeholder="500万(含)以上请申购广发货币B" v-model="moneyThousands">
-                        <input v-else id="money" type="tel" placeholder="500万起投" v-model="moneyThousands">
+                        <input v-else-if='isB' id="money" type="tel" placeholder="500万起投" v-model="moneyThousands">
+                        <input v-else id="money" type="tel" placeholder="100万起投" v-model="moneyThousands">
                         <span>（元）</span>
                     </div>
                 </div>
@@ -127,7 +128,7 @@
                     </div>
                     <div class="triangle"></div>
                 </div>
-                <div v-if="isB" class="btns">
+                <div v-if="isB || isHX" class="btns">
                     <div>
                         <button class="sure" @click="reser($event, 3, 0)">确认赎回</button>
                         <span>当日计算收益</span>
@@ -203,10 +204,10 @@
                         <span v-text="isOTF ? '场内交易' : '场外交易'"></span>
                     </div>
                     <div class="triangle"></div>
-                    <div class="detail">
+                   <!--  <div class="detail">
                         <span>注：请贵公司于当日15:00前在<em v-text="isOTF ? '场内交易系统' : '基金公司直销柜台'"></em>完成</span>
                         <span><em>{{ product.name }}</em>交易</span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="btns">
                     <button @click="confirmAcct($event, 4)" :class="{ disabled: authErrMsg }" :disabled="Boolean(authErrMsg)" data-clicked="0">确权</button>
@@ -348,6 +349,10 @@ export default {
             // 场内
             return this.product.marketType == 1;
         },
+        isHX(){
+            return this.product.issueId == 4;
+
+        },
         formatMoney() {
             let value = this.product.totalAsset;
             if (!isNaN(value) && value != null) {
@@ -410,13 +415,15 @@ export default {
                 $.alert('请选择产品');
             } else if (money === 0) {
                 $.alert('份额不能为0');
-            }  else if (remaining<200 && remaining!=0) {
+            }  else if (modalType == 3&&remaining<200 && remaining!=0) {
                 $.alert('赎回后份额余额不得小于200');
             } else if (modalType == 2 && dataObj.prodCode == '000509' && money > 20000000) {
                 // 广发申购限额
                 $.alert('超出申购限额');
             } else if (modalType == 2 && dataObj.prodCode == '270014' && money < 50000000) {
                 $.alert('500万起投');
+            }else if (modalType == 2 && dataObj.issueId == 4 && money < 10000000) {
+                $.alert('100万起投');
             } else if (modalType == 2 && dataObj.prodCode == '270004' && money == 0) {
                 $.alert('申购金额应大于0');
             } else {
