@@ -9,12 +9,9 @@
             <div class="section">
                 <div class="title hxvenue">
                     <span>券商资管</span>
-                    <div class="btns">
-                        <a class="btn" @click="showTip()">什么是确权？</a>
-                    </div>
                 </div>
                 <div class="content">
-                    <template v-for="(item,index) in filterMarketType(2)" v-if="item.issueId===4">
+                    <template v-for="(item, index) in filterHxProducts">
                         <div class="item" :key="index">
                             <div class="top">
                                 <div class="name">
@@ -46,8 +43,8 @@
                                     </span>
                                 </div>
                                 <div class="block">
-                                        <button class="buy" @click="openModal($event, 2, 2, 0)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode" :data-forwardType='item.carryForwardType'>申购</button>
-                                        <button class="sell" @click="openModal($event, 3, 2, 1)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode">赎回</button>
+                                    <button class="buy" @click="openModal($event, 2, 2, 0)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode" :data-forwardType='item.carryForwardType'>申购</button>
+                                    <button class="sell" @click="openModal($event, 3, 2, 1)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode">赎回</button>
                                 </div>
                             </div>
                         </div>
@@ -57,9 +54,13 @@
             <div class="section ">
                 <div class="title venue">
                     <span>场内基金</span>
+                    <div class="btns">
+                        <a class="btn" @click="showTip()">什么是确权？</a>
+                    </div>
+
                 </div>
                 <div class="content">
-                    <template v-for="(item,index) in filterMarketType(1)">
+                    <template v-for="(item,index) in filterMarketType(1)" v-if="item.issueId!=4">
                         <div class="item" :key="index">
                             <div class="top">
                                 <div class="name">
@@ -98,7 +99,7 @@
                     <span>场外基金</span>
                 </div>
                 <div class="content">
-                    <template v-for="(item,index) in filterMarketType(2)"  v-if="item.issueId!=4">
+                    <template v-for="(item,index) in filterMarketType(2)" v-if="item.issueId!=4">
                         <div class="item" :key="index">
                             <div class="top">
                                 <div class="name">
@@ -147,7 +148,7 @@
         <template v-if="current">
             <div class="section">
                 <div class="content ">
-                    <template v-for="(item,index) in filterMarketType(null)">
+                    <template v-for="(item, index) in filterDqProducts">
                         <div class="item item-current" :class='{"current-end":item.endFlag===true}' :key="index">
                             <div class="top top-current ">
                                 <div class="name">
@@ -224,9 +225,7 @@
     </div>
 </template>
 <script>
-import {
-    eventHub
-} from '../../plugins/utils'
+import {eventHub} from '../../plugins/utils'
 import * as cModal from '../../components/Modal'
 
 export default {
@@ -245,6 +244,22 @@ export default {
     computed: {
         products() {
             return this.$store.getters.getProducts
+        },
+        filterHxProducts() {
+            let _self = this;
+            const hxProducts = _self.products.filter((product) => {
+                return product.issueId == 4
+            })
+            return hxProducts
+
+        },
+        filterDqProducts() {
+            let _self = this;
+            const dQProducts = _self.products.filter((product) => {
+                return product.issueId == 3
+            })
+            return dQProducts
+
         }
     },
     methods: {

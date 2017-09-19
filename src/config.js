@@ -18,6 +18,7 @@ export default {
             wealth: basePath + 'wealth',
             totalAsset: basePath + 'wealth/totalAssert',
             taAcctDetail: basePath + 'wealth/taAcctDetail',
+            remain:basePath+"products/remain",
             points: basePath + 'points',
             point: basePath + 'points/point',
             recommend: basePath + 'products/rec',
@@ -41,7 +42,9 @@ export default {
             openAcct: basePath + 'organ/openAcct',
             lofConfirmAcct: basePath + 'organ/lofConfirmAcct',
             etfConfirmAcct: basePath + 'organ/etfConfirmAcct',
-            taSubscribe: basePath + 'organ/taSubscribe'
+            taSubscribe: basePath + 'organ/taSubscribe',
+            totalAsset: basePath + 'wealth/totalAssert'
+            
             
         }
     }

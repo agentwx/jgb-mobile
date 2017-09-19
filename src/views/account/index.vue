@@ -75,9 +75,16 @@
                         <template v-for="item in taInfo"><span v-if="selected==item.acctId">请以贵公司开户银行({{ item.bankName }}尾号{{ item.bankAcctNo | numberLen }}），将预约资金汇入以下银行账户</span></template>
                         <!-- <span>请以贵公司开户银行（{{ bankInfo.bankName }}尾号{{ bankInfo.shortAcctNo.substr(-4) }}），将预约资金汇入以下银行账户</span> -->
                         <div class="bank-info">
-                            <span>银行户名：广发基金管理有限公司直销账户</span>
-                            <span>银行账号：3602 0001 2983 8383 823</span>
-                            <span>开户行：中国工商银行广州第一支行</span>
+                            <span>银行户名：{{(isQDZ||isQDZA||isB)?'广发基金管理有限公司直销专户':'上海华信证券有限责任公司销售专户'}}</span>
+                            <span>银行账号：{{(isQDZ||isQDZA||isB)?'3602 0001 2983 8383 823':'4000 0405 2920 0414 049'}}</span>
+                            <span>开户行：{{(isQDZ||isQDZA||isB)?'中国工商银行广州第一支行':'中国工商银行股份有限公司深圳星河支行'}}</span>
+                            <template v-if="isQDZ||isQDZA||isB">
+                               <span>跨行大额支付号： 1025 8100 0013</span>
+                            <span>同行大额支付号： 2587 3005</span>
+                            </template>
+                            <template v-else>
+                                <span>联行号: 102584004055</span>
+                            </template>
                         </div>
                         <span>注:1.当日15：00前完成汇款，次日计息；<em>15：00之后汇款，当{{product.carryForwardType}}日交易失败。</em></span>
                         <template v-if='product.carryForwardType==1'>
@@ -108,17 +115,20 @@
                     <div class="row">
                         <span>选择账户：</span>
                         <select id="acct-id">
-                            <option v-for="item in taInfo" :value="item.acctId">{{ item.name }}</option>
+                            <option v-for="(item,index) in taInfo" :value="item.acctId" :key="index">{{ item.name }}</option>
                         </select>
                     </div>
                     <div class="row">
                         <span>赎回份额：</span>
-                        <input id="money" v-model="moneyThousands" type="text" :placeholder="'最大份额：' + formatMoney+'份'">
+                        <input id="money" type="text" :placeholder="'最大份额：' + formatAsset +' 份'" v-model="moneyThousands">
+
+                        <!-- <input id="money" v-model="moneyThousands" type="text" :placeholder="'最大份额：' + formatMoney+'份'"> -->
                         <!-- <button class="reser-all" @click="reserAll($event, 1)">全部赎回</button> -->
                     </div>
                     <div class="row hint" >
                         <span >赎回份额：</span>
-                        <p >赎回后份额余额不得小于200</p>
+                        <p v-if="product.issueId!=4">赎回后份额余额请勿低于200</p>
+                        <p v-else>赎回后份额余额不得低于100万</p>
                     </div>
 
                 </div>
@@ -234,7 +244,7 @@
                         <input id="ta-account-id" type="text" v-model='credit' :disabled='addAccount'>
                         <div class="account-list" v-if='accountList'>
                             <ul>
-                                <li @click='selectAccount($event)' v-for="info in regularList">{{info}}</li>
+                                <li @click='selectAccount($event)' v-for="(info,index) in regularList" :key="index">{{info}}</li>
                                 <li><a @click='addCredit'> +添加账户</a></li>
                             </ul>
                         </div>
@@ -273,9 +283,8 @@ export default {
     },
     data() {
         return {
-                        moneyThousands: '',
+            moneyThousands: '',
             txnAmountThousands: '',
-
             showOrderBuy: false,
             showOrderSell: false,
             showBuy: false,
@@ -289,6 +298,7 @@ export default {
                 id: 0,
                 name: '',
                 prodCode: '',
+                remain:0,
                 issueId: 0,
                 txnType: 0,
                 totalAsset: 0,
@@ -353,7 +363,7 @@ export default {
             return this.product.issueId == 4;
 
         },
-        formatMoney() {
+        formatAsset() {
             let value = this.product.totalAsset;
             if (!isNaN(value) && value != null) {
                 let num = parseFloat(value).toFixed(2);
@@ -363,7 +373,8 @@ export default {
                 return '0.00';
             }
         }
-    },
+
+   },
     methods: {
         thousand(num) {
             var arr = num.split(",");
@@ -410,19 +421,21 @@ export default {
                 moneyStr=Number(moneyStr.replace(/,/g, ''));
             let dataObj = this.product;
             let money=Number(moneyStr);
-            const remaining=this.product.totalAsset-money
+            const remaining=this.product.totalAsset-money;
             if (!$prodcut.hasClass('active')) {
                 $.alert('请选择产品');
             } else if (money === 0) {
                 $.alert('份额不能为0');
+            } else if (modalType==3&&this.product.issueId==4&&remaining<1000000 && remaining!=0) {
+                $.alert('赎回后份额余额不得低于100万');
             }  else if (modalType == 3&&remaining<200 && remaining!=0) {
                 $.alert('赎回后份额余额不得小于200');
-            } else if (modalType == 2 && dataObj.prodCode == '000509' && money > 20000000) {
+            } else if (modalType == 2 && dataObj.prodCode == '000509' && money > 2000000) {
                 // 广发申购限额
                 $.alert('超出申购限额');
-            } else if (modalType == 2 && dataObj.prodCode == '270014' && money < 50000000) {
+            } else if (modalType == 2 && dataObj.prodCode == '270014' && money < 5000000) {
                 $.alert('500万起投');
-            }else if (modalType == 2 && dataObj.issueId == 4 && money < 10000000) {
+            }else if (modalType == 2 && dataObj.issueId == 4 && money < 1000000) {
                 $.alert('100万起投');
             } else if (modalType == 2 && dataObj.prodCode == '270004' && money == 0) {
                 $.alert('申购金额应大于0');
@@ -550,18 +563,32 @@ export default {
         },
         showModal(objData) {
             let _self = this;
-            // _self.$root.popping = true;
             _self.product = objData.product;
-            if (objData.getAsset) {
-                productService.getTotalAsset(objData.product.id, _self).then((data) => {
-                    objData.product.totalAsset = data;
-                })
-            }
-            if (objData.product.issueId == 2) {
-                productService.getTaInfo(2, _self).then((data) => {
+            if (objData.product.issueId == 2||objData.product.issueId == 4) {
+                productService.getTaInfo(objData.product.issueId, _self).then((data) => {
                     _self.taInfo = data;
-                    let selected = data[0].acctId;
+                    if (data&&data.length>0) {
+                        let selected =data[0].acctId;
                     _self.selected = selected;
+                     if (objData.getAsset&&objData.product.issueId!=1&&objData.product.issueId!=3) {
+                         productService.getRemain(selected,objData.product.id, _self).then((data) => {
+                             objData.product.totalAsset = data;
+                     })
+                     }
+                     switch (objData.modalType) {
+               
+                            case 2:
+                                _self.showBuy = true;
+                                break;
+                            case 3:
+                                _self.showSell = true;
+                                break;
+              
+                                    }
+                    }else{
+                        $.alert('您暂未开户，请先在PC端开户')
+                    }
+                    
                 })
             }
             if (objData.modalType == 5) {
@@ -583,12 +610,12 @@ export default {
                 case 1:
                     _self.showOrderSell = true;
                     break;
-                case 2:
-                    _self.showBuy = true;
-                    break;
-                case 3:
-                    _self.showSell = true;
-                    break;
+                // case 2:
+                //     _self.showBuy = true;
+                //     break;
+                // case 3:
+                //     _self.showSell = true;
+                //     break;
                 case 4:
                     _self.authErrMsg = '';
                     _self.showAuth = true;
