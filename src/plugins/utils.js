@@ -157,6 +157,8 @@ export const errorHandler = (errCode) => {
             $.alert('没有开户或者开户未成功');break;
         case 'J0013':
             $.alert('交易失败，系统内部错误');break;
+        case 'J0028':
+            $.alert('可申购份额不足');break;
         default:
             $.alert('未知错误，返回首页', function () { userService.logout(); });break;
     }

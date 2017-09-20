@@ -225,7 +225,7 @@
     </div>
 </template>
 <script>
-import {eventHub} from '../../plugins/utils'
+import { eventHub } from '../../plugins/utils'
 import * as cModal from '../../components/Modal'
 
 export default {
@@ -294,6 +294,7 @@ export default {
                     carryForwardType: $dom.data('forwardtype'),
                     txnType: txnType,
                     totalAsset: 0,
+                    remainAmount: 0,
                     marketType: marketType
                 },
                 getAsset: false,
