@@ -224,9 +224,9 @@
                     </div>
                     <div class="triangle"></div>
                     <!--  <div class="detail">
-                            <span>注：请贵公司于当日15:00前在<em v-text="isOTF ? '场内交易系统' : '基金公司直销柜台'"></em>完成</span>
-                            <span><em>{{ product.name }}</em>交易</span>
-                        </div> -->
+                                <span>注：请贵公司于当日15:00前在<em v-text="isOTF ? '场内交易系统' : '基金公司直销柜台'"></em>完成</span>
+                                <span><em>{{ product.name }}</em>交易</span>
+                            </div> -->
                 </div>
                 <div class="btns">
                     <button @click="confirmAcct($event, 4)" :class="{ disabled: authErrMsg }" :disabled="Boolean(authErrMsg)" data-clicked="0">确权</button>
@@ -314,7 +314,7 @@ export default {
                 txnType: 0,
                 totalAsset: 0,
                 marketType: 1,
-                remainAmount:0
+                remainAmount: 0
             },
             taInfo: [{
                 name: '',
@@ -435,6 +435,7 @@ export default {
             $dom.focus();
         },
         reser(e, modalType, reserType) {
+            const _self=this;
             let $content = $(e.target).parents('.btns').siblings('.content');
             let $prodcut = $content.find('.select');
             let $input = $content.find('input');
@@ -462,9 +463,23 @@ export default {
             } else if (modalType == 2 && dataObj.prodCode == '270004' && money == 0) {
                 $.alert('申购金额应大于0');
             } else {
-                (modalType == 0 || modalType == 2) ? money = money : null;
-                (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
-                this.closeModal(modalType);
+                let tradeType=modalType==2?'产品申购':'产品赎回';
+                let unit=modalType==2?' 元':' 份';
+                $.confirm({
+                    title: '交易提醒',
+                    text: '<div style="color:#666666;text-align: left;white-space: nowrap;text-overflow: ellipsis;overflow: hidden"><p>交易账户：' + _self.taInfo[0].name + '</p><p>交易产品：' + _self.product.name + '</p><p>交易类型：' + tradeType + '</p><p>交易金额：' + $input.val()+unit + '</p></div>',
+                    onOK: function() {
+                           (modalType == 0 || modalType == 2) ? money = money : null;
+                (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, _self) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), _self);
+                _self.closeModal(modalType)
+                    },
+                    onCancel: function() {
+                    }
+                });
+
+                // (modalType == 0 || modalType == 2) ? money = money : null;
+                // (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
+                // this.closeModal(modalType);
             }
         },
         // reserAll(e, modalType) {
@@ -586,7 +601,7 @@ export default {
         showModal(objData) {
             let _self = this;
             _self.product = objData.product;
-             if (objData.modalType == 2 && objData.product.issueId == 4) {
+            if (objData.modalType == 2 && objData.product.issueId == 4) {
                 productService.getMaxRemain(objData.product.prodCode, _self).then((data) => {
                     _self.product.remainAmount = data.remainAmount;
                 })
