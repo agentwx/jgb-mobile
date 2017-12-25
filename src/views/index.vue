@@ -51,7 +51,7 @@ export default {
     },
     data() {
         const date = new Date();
-        const abortTime = new Date('2017-05-02');
+        const abortTime = new Date('2018-01-05');
         const newTime=abortTime.getTime()-8*3600;
         return {
             pageNo: 0,

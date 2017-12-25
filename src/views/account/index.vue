@@ -91,7 +91,7 @@
                                 <span>联行号: 102584004055</span>
                             </template>
                         </div>
-                        <span>注:1.当日15：00前完成汇款，次日计息；
+                        <span>注:{{product.carryForwardType==1?'1.':''}}当日15：00前完成汇款，次日计息；
                             <em>15：00之后汇款，当{{product.carryForwardType}}日交易失败。</em>
                         </span>
                         <template v-if='product.carryForwardType==1'>
@@ -466,7 +466,7 @@ export default {
                 let tradeType=modalType==2?'产品申购':'产品赎回';
                 let unit=modalType==2?' 元':' 份';
                 $.confirm({
-                    title: '交易提醒',
+                    title: '交易确认',
                     text: '<div style="color:#666666;text-align: left;white-space: nowrap;text-overflow: ellipsis;overflow: hidden"><p>交易账户：' + _self.taInfo[0].name + '</p><p>交易产品：' + _self.product.name + '</p><p>交易类型：' + tradeType + '</p><p>交易金额：' + $input.val()+unit + '</p></div>',
                     onOK: function() {
                            (modalType == 0 || modalType == 2) ? money = money : null;

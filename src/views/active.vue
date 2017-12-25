@@ -1,6 +1,6 @@
 <template>
     <div class="active-wrap">
-        <div class="active"><img src="../assets/images/active/51.jpg" alt=""></div>
+        <div class="active"><img src="../assets/images/active/2018.png" alt=""></div>
         <div class="btn">
             <button @click='hideActive()'>进入机构宝</button>
         </div>
